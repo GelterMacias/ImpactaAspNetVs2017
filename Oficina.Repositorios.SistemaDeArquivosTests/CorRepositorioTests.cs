@@ -25,5 +25,27 @@ namespace Oficina.Repositorios.SistemaDeArquivos.Tests
             }
 
         }
+
+
+        [TestMethod()]
+        [DataRow(1)]
+        [DataRow(-1)]
+        public void SelecionarPorIdTest(int corId)
+        {
+
+            var corRepositorio = new CorRepositorio();
+
+            var cor = corRepositorio.Selecionar(corId);
+
+            if (corId > 0)
+            {
+                Assert.IsTrue(cor.ID == 1);
+            }
+            else
+            {
+                Assert.IsNull(cor);
+            }
+            
+        }
     }
 }

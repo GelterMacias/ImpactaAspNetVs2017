@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oficina.Repositorios.SistemaDeArquivos
 {
@@ -14,6 +11,9 @@ namespace Oficina.Repositorios.SistemaDeArquivos
         //Para que o caminho do arquivo texto não fique no código
         //Procura as configurações no arquivo App.Config
         private string _caminhoArquivo = ConfigurationManager.AppSettings["caminhoArquivoCor"];
+
+
+        //
 
         public List<Cor> Selecionar()
         {
@@ -31,7 +31,38 @@ namespace Oficina.Repositorios.SistemaDeArquivos
 
             return cores;
         }
+
+        //Polimorfismo - aceita dois metodos com o mesmo nome mas parametros de entrada diferente
+        
+        // Assinatura de método:
+        // Publico ou / Paramertro de sair / nome do metodo/ parametro de entrada
+
+        public Cor Selecionar(int corId)
+        {
+            Cor cor = null;
+
+            foreach (var linha in File.ReadAllLines(_caminhoArquivo))
+            {
+                //Converter para o mesmo tipo do parametro de entrada para comparar
+                var linhaId = Convert.ToInt32(linha.Substring(0, 5));
+
+                if (linhaId == corId)
+                {
+
+                    cor = new Cor();
+                    cor.ID = linhaId;
+                    cor.Nome = linha.Substring(5);
+                    //Para interromper o loop do foreach, não precisa continuar a percorrer os registros
+                    break;
+                }
+            }
+
+            return cor;
+        }
+
+
     }
 
     // CRUDE = create - read - update - delete
+    //new reserva espaço na memória, consome memória
 }

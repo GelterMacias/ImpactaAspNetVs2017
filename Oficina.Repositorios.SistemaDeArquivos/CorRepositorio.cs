@@ -10,10 +10,10 @@ namespace Oficina.Repositorios.SistemaDeArquivos
     {
         //Para que o caminho do arquivo texto não fique no código
         //Procura as configurações no arquivo App.Config
-        private string _caminhoArquivo = ConfigurationManager.AppSettings["caminhoArquivoCor"];
+        private string _caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory ,ConfigurationManager.AppSettings["caminhoArquivoCor"]);
 
 
-        //
+        //ToDo: OO - polimorfismo por sobrecarga - Dois metodos Selecionar
 
         public List<Cor> Selecionar()
         {

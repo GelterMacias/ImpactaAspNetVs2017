@@ -2,6 +2,18 @@
     Layout = null;
 }
 
+@* Instanciar uma classe *@
+@* Using é o nome do namespace *@
+@using Oficina.WebPages
+@{ var _veiculoAplicação = new VeiculoAplicacao();
+
+    if (IsPost)
+    {
+        _veiculoAplicação.Inserir();
+    }
+
+}
+
 <!DOCTYPE html>
 
 <html>
@@ -9,14 +21,135 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Cadastro de Veículos</title>
+    @* Para usar a fonte do Google Fonts *@
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <style>
+/*Linguagem de formatação CSS*/
+
+    body{
+        font-size:16px;
+        font-family:'Roboto', sans-serif;
+    }
+
+    label{
+        min-width: 100px;
+        display:inline-block;
+    }
+
+    input,select{
+        min-width: 200px;
+        min-height: 24px;
+        margin-bottom: 5px;
+    }
+
+    input[type=submit]{
+        width: 300px;
+    }
+
+    </style>
+
 </head>
 
 <body>
     <h1>Cadastro de Veículos</h1>
-    <hr/>
-    <form>
+    <hr />
+    @* Method = post para não enviar os dados pela URL *@
+    <form method="post">
 
+        @*for: seleciona o objeto quando clicar na label*@
+        <label for="marca">Marca:</label>
+        @*Combobox:*@
+        @*name é o que é enviado ao servidor*@
+        <select name="marca" id="marca" onchange="obterModelos(this.value)">
+            <option value="">Selecione</option>
+            @*Razor: mistura html com c#, simbolo é @*@
+            @foreach (var marca in _veiculoAplicação.Marcas)
+                {
+                <option value="@marca.Id" selected="@Convert.ToBoolean(marca.Id.ToString() == _veiculoAplicação.MarcaSelecionada)">@marca.Nome</option>
+                }
+        </select>
+
+        <br /> @*breakrow*@
+        <br />
+
+        <label for="modelo">Modelo:</label>
+        <select name="modelo" id="modelo">
+            <option value="value">Selecione</option>
+            @foreach (var modelo in _veiculoAplicação.Modelos)
+                    {
+                    <option value="@modelo.Id">@modelo.Descricao</option>
+                    }
+        </select>
+
+        <br />
+        <br />
+
+        <label for="placa">Placa:</label>
+        <input type="text" name="placa" id="placa" />
+
+        <br />
+        <br />
+
+        <label for="ano">Ano:</label>
+        <input type="text" name="ano" id="ano" />
+
+        <br />
+        <br />
+
+        <label for="cor">Cor:</label>
+        <select name="cor" id="cor">
+            <option value="value">Selecione</option>
+            @foreach (var cor in _veiculoAplicação.Cores)
+            {
+                <option value="@cor.ID">@cor.Nome</option>
+            }
+        </select>
+
+        <br />
+        <br />
+
+        <label for="combustivel">Combustivel:</label>
+        <select name="combustivel" id="combustivel">
+            <option value="value">Selecione</option>
+            @foreach (var combustivel in _veiculoAplicação.Combustiveis)
+            {
+                <option value="@((int)combustivel)">@combustivel</option>
+            }
+        </select>
+
+        <br />
+        <br />
+
+        <label for="cambio">Câmbio:</label>
+        <select name="cambio" id="cambio" >
+            <option value="value">Selecione</option>
+            @foreach (var cambio in _veiculoAplicação.Cambios)
+            {
+                <option value="@((int)cambio)">@cambio</option>
+            }
+        </select>
+
+        <br />
+        <br />
+
+        <label for="observacao">Observação:</label>
+        <br />
+        <textarea name="observacao" id="observacao" rows="10" cols="40"></textarea>
+
+        <br />
+
+        <input type="submit" value="Gravar"/>
+        
     </form>
+
+    <script type="text/javascript">
+        //Faz uma recarga da página fazendo uma chamada dos dados de modelos conforme a marca
+        function obterModelos(marcaId) {
+            const nomePagina = document.location.pathname;
+            document.location.href = nomePagina + "?marcaId=" + marcaId;
+        }
+    </script>
 </body>
 
 </html>

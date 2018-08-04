@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<veiculos>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>8c22ee55-8679-4257-a6db-105de427d7ac</Id>
+    <Placa>ABC1234</Placa>
+    <Ano>2014</Ano>
+    <Observacao>N/A</Observacao>
+    <Modelo>
+      <Id>3</Id>
+      <Descricao>Argo</Descricao>
+      <Marca>
+        <Id>3</Id>
+        <Nome>Fiat</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>1</ID>
+      <Nome>Preto</Nome>
+    </Cor>
+    <Combustivel>Flex</Combustivel>
+    <Cambio>Automatico</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>b8ab70bb-ce26-4520-828c-1b198718e872</Id>
+    <Placa>FAE1223</Placa>
+    <Ano>2012</Ano>
+    <Observacao />
+    <Modelo>
+      <Id>1</Id>
+      <Descricao>Captiva</Descricao>
+      <Marca>
+        <Id>1</Id>
+        <Nome>Chevrolet</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>3</ID>
+      <Nome>Azul</Nome>
+    </Cor>
+    <Combustivel>Flex</Combustivel>
+    <Cambio>Automatico</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>cff7fb73-7685-4a3b-8772-6347d9488382</Id>
+    <Placa>EAT6932</Placa>
+    <Ano>2015</Ano>
+    <Observacao>Avaria na centralina</Observacao>
+    <Modelo>
+      <Id>4</Id>
+      <Descricao>C4 Picasso</Descricao>
+      <Marca>
+        <Id>4</Id>
+        <Nome>Citröen</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>5</ID>
+      <Nome>Vermelho</Nome>
+    </Cor>
+    <Combustivel>Hibrido</Combustivel>
+    <Cambio>Manual</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>029158e3-5f69-4535-8209-9d5dbb937783</Id>
+    <Placa>EAT6932</Placa>
+    <Ano>2015</Ano>
+    <Observacao>Avaria na centralina</Observacao>
+    <Modelo>
+      <Id>4</Id>
+      <Descricao>C4 Picasso</Descricao>
+      <Marca>
+        <Id>4</Id>
+        <Nome>Citröen</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>5</ID>
+      <Nome>Vermelho</Nome>
+    </Cor>
+    <Combustivel>Hibrido</Combustivel>
+    <Cambio>Manual</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>33a82201-2b7f-43fb-a14a-6941624b9061</Id>
+    <Placa>EAT6932</Placa>
+    <Ano>2015</Ano>
+    <Observacao>Avaria na centralina</Observacao>
+    <Modelo>
+      <Id>4</Id>
+      <Descricao>C4 Picasso</Descricao>
+      <Marca>
+        <Id>4</Id>
+        <Nome>Citröen</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>5</ID>
+      <Nome>Vermelho</Nome>
+    </Cor>
+    <Combustivel>Hibrido</Combustivel>
+    <Cambio>Manual</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>f3ef3ee8-fceb-42c9-b97d-052dee1e489d</Id>
+    <Placa>EAT6932</Placa>
+    <Ano>2015</Ano>
+    <Observacao>Avaria na centralina</Observacao>
+    <Modelo>
+      <Id>4</Id>
+      <Descricao>C4 Picasso</Descricao>
+      <Marca>
+        <Id>4</Id>
+        <Nome>Citröen</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>5</ID>
+      <Nome>Vermelho</Nome>
+    </Cor>
+    <Combustivel>Hibrido</Combustivel>
+    <Cambio>Manual</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>2c3c8bc5-9921-4163-85dc-f712e207555c</Id>
+    <Placa>EAT6932</Placa>
+    <Ano>2015</Ano>
+    <Observacao>Avaria na centralina</Observacao>
+    <Modelo>
+      <Id>4</Id>
+      <Descricao>C4 Picasso</Descricao>
+      <Marca>
+        <Id>4</Id>
+        <Nome>Citröen</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>5</ID>
+      <Nome>Vermelho</Nome>
+    </Cor>
+    <Combustivel>Hibrido</Combustivel>
+    <Cambio>Manual</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>d282a7e2-67e1-40f2-ab89-497a686afe4c</Id>
+    <Placa>EAT6932</Placa>
+    <Ano>2015</Ano>
+    <Observacao>Avaria na centralina</Observacao>
+    <Modelo>
+      <Id>4</Id>
+      <Descricao>C4 Picasso</Descricao>
+      <Marca>
+        <Id>4</Id>
+        <Nome>Citröen</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>5</ID>
+      <Nome>Vermelho</Nome>
+    </Cor>
+    <Combustivel>Hibrido</Combustivel>
+    <Cambio>Manual</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>e8d0a65e-e594-4b0b-a1ae-2272fe578530</Id>
+    <Placa>EAT6932</Placa>
+    <Ano>2015</Ano>
+    <Observacao>Avaria na centralina</Observacao>
+    <Modelo>
+      <Id>4</Id>
+      <Descricao>C4 Picasso</Descricao>
+      <Marca>
+        <Id>4</Id>
+        <Nome>Citröen</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>5</ID>
+      <Nome>Vermelho</Nome>
+    </Cor>
+    <Combustivel>Hibrido</Combustivel>
+    <Cambio>Manual</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>a67f1903-c5d3-4446-a787-d0a88ef673ef</Id>
+    <Placa>EAT6932</Placa>
+    <Ano>2015</Ano>
+    <Observacao>Avaria na centralina</Observacao>
+    <Modelo>
+      <Id>4</Id>
+      <Descricao>C4 Picasso</Descricao>
+      <Marca>
+        <Id>4</Id>
+        <Nome>Citröen</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>5</ID>
+      <Nome>Vermelho</Nome>
+    </Cor>
+    <Combustivel>Hibrido</Combustivel>
+    <Cambio>Manual</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>e4079433-819c-4f5a-9f2e-36cce76a5aff</Id>
+    <Placa>EAT6932</Placa>
+    <Ano>2015</Ano>
+    <Observacao>Avaria na centralina</Observacao>
+    <Modelo>
+      <Id>4</Id>
+      <Descricao>C4 Picasso</Descricao>
+      <Marca>
+        <Id>4</Id>
+        <Nome>Citröen</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>5</ID>
+      <Nome>Vermelho</Nome>
+    </Cor>
+    <Combustivel>Hibrido</Combustivel>
+    <Cambio>Manual</Cambio>
+  </Veiculo>
+</veiculos>

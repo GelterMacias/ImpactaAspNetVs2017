@@ -220,4 +220,46 @@
     <Combustivel>Hibrido</Combustivel>
     <Cambio>Manual</Cambio>
   </Veiculo>
+  <VeiculoPasseio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>ef1fc067-940d-428b-81e8-5f99c2e684e3</Id>
+    <Placa>EUE9122</Placa>
+    <Ano>2012</Ano>
+    <Observacao>11/08</Observacao>
+    <Modelo>
+      <Id>2</Id>
+      <Descricao>Ka</Descricao>
+      <Marca>
+        <Id>2</Id>
+        <Nome>Ford</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>1</ID>
+      <Nome>Preto</Nome>
+    </Cor>
+    <Combustivel>Gasolina</Combustivel>
+    <Cambio>Manual</Cambio>
+    <Carroceria>Suv</Carroceria>
+  </VeiculoPasseio>
+  <VeiculoPasseio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>b7d81570-9ca8-48e1-a7c1-ca5f085682b8</Id>
+    <Placa>EAT6932</Placa>
+    <Ano>2015</Ano>
+    <Observacao>4343</Observacao>
+    <Modelo>
+      <Id>4</Id>
+      <Descricao>C4 Picasso</Descricao>
+      <Marca>
+        <Id>4</Id>
+        <Nome>Citröen</Nome>
+      </Marca>
+    </Modelo>
+    <Cor>
+      <ID>1</ID>
+      <Nome>Preto</Nome>
+    </Cor>
+    <Combustivel>Gasolina</Combustivel>
+    <Cambio>Automatico</Cambio>
+    <Carroceria>Suv</Carroceria>
+  </VeiculoPasseio>
 </veiculos>

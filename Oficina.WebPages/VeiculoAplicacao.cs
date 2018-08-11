@@ -58,6 +58,12 @@ namespace Oficina.WebPages
             //Ctrl+K+S
 
             //Tratamento de erro
+            // F9 = Cria Breakpoint 
+            // F10 = Avança no código
+            // F11 = Verifica ser tem dependencia e vai para ela 
+            // F5 = Avança de um BRKP para o Outro BRKP
+
+            //normalmente se usa o try/catch na camada de interação com o usuario
             try
             {
                 var veiculo = new VeiculoPasseio();
@@ -77,20 +83,37 @@ namespace Oficina.WebPages
             catch (FileNotFoundException ex)
             {
                 HttpContext.Current.Items.Add("MensagemErro",$"Arquivo {ex.FileName} não econtrado.");
+                //Propaga o erro para cima (próxima camada = Veiculo.cshtml), sem ele não vai aparacer na tela
+                throw;
             }
             catch (UnauthorizedAccessException)
             {
                 HttpContext.Current.Items.Add("MensagemErro", $"Arquivo sem permissão de gravação.");
+                throw;
             }
             catch (DirectoryNotFoundException)
             {
                 HttpContext.Current.Items.Add("MensagemErro", $"Diretorio não econtrado.");
+                throw;
             }
-            //Tem que existir sempre em último lugar V V V
-            catch (Exception)
+            //Tem que existir sempre um exception em último lugar V V V
+            //normalmente se usa apenas o exception
+            catch (Exception excecao)
             {
                 HttpContext.Current.Items.Add("MensagemErro", $"Ops, ocorreu um erro!");
-                //throw;
+
+                //logar o erro no objeto excecao
+                //usar componente log4net
+
+
+                throw;
+                //throw excecao;
+                //mata toda o erro desta camada para baixo, somente este erro para cima é propagado
+            }
+            finally
+            {
+                //independente de sucesso/erro executa o finally
+                //executado mesmo que tenha um return antes.
             }
         }
     }

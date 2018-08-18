@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace AspNetVS2017.Caopitulo03.MVC.Portifolio
+namespace ViagensOnline.MVC
 {
     public class BundleConfig
     {
@@ -21,14 +21,11 @@ namespace AspNetVS2017.Caopitulo03.MVC.Portifolio
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js",
-                      "~/Scripts/jquery.fancybox.js"));
+                      "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/jquery.fancybox.css",
                       "~/Content/site.css"));
-
         }
     }
 }

@@ -1,0 +1,22 @@
+﻿@model AspNetVS2017.Caopitulo03.MVC.Portifolio.Models.PortfolioViewModel 
+    @*Linha mais importante encontra as properties do Model*@
+@{
+    ViewBag.Title = "Portfólio";
+}
+
+<h2>Portfólio</h2>
+
+<div class="row">
+    @foreach (var caminho in Model.CaminhosImagens)
+    {
+        <a href="@caminho" class="fancybox">   @*Elemento Âncora*@
+            <img src="@caminho" alt="@caminho" class="img-responsive"/> @*Atributos da Imagem: Source e Caminho Alternativo*@ 
+        </a> 
+    }
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(".fancybox").fancybox(); /*Para executar o fancybox*/
+    </script>
+    }

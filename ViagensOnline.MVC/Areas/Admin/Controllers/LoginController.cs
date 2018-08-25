@@ -42,7 +42,14 @@ namespace ViagensOnline.MVC.Areas.Admin.Controllers
             //Open Web Interface for .NET (Kestrel)
             Request.GetOwinContext().Authentication.SignIn(identidade);
 
-            return View();
+            var returnUrl = Request.QueryString["ReturnUrl"];
+
+            if (string.IsNullOrEmpty(returnUrl))
+            {
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
+
+            return Redirect("~/" + returnUrl); // ~/ é do ASP.net = apartir da raiz
         }
 
         public ActionResult Logout()

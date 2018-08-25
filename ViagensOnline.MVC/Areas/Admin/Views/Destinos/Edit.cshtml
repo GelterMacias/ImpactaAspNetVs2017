@@ -1,20 +1,24 @@
 ﻿@model ViagensOnline.MVC.Models.DestinoViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
-@*Precisa dos parametros abaixo para upload senão não carrega*@
-@using (Html.BeginForm("Create","Destinos",FormMethod.Post, new {enctype = "multipart/form-data" }))  
-{
+
+@*@using (Html.BeginForm())*@
+@*Precisa dos parametros abaixo para upload senão não carrega / Copiado do Creat*@
+@using (Html.BeginForm("Edit", "Destinos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>DestinoViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -39,17 +43,30 @@
             </div>
         </div>
 
-        <div class="form-group"> @*Substituir CamimnhoImagem para ArquivoFoto*@
+        <div class="form-group"> 
+            @Html.LabelFor(model => model.CaminhoImagem, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img src="@Model.CaminhoImagem" alt="@Model.Nome" class="img-thumbnail" width="350" /> @*class= chama classe bootstrap*@
+                @*@Html.EditorFor(model => model.CaminhoImagem, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CaminhoImagem, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        @*Copiado do Creat para carga de imagem*@
+        <div class="form-group">
+            @*Substituir CamimnhoImagem para ArquivoFoto*@
             @Html.LabelFor(model => model.ArquivoFoto, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10"> @*Alterar de Editor para TextBox*@
-                @Html.TextBoxFor(model => model.ArquivoFoto, new { @class = "form-control", type ="file" } ) @*Atributo de Layout BootStrap*@
+            <div class="col-md-10">
+                @*Alterar de Editor para TextBox*@
+                @Html.TextBoxFor(model => model.ArquivoFoto, new { @class = "form-control", type = "file" }) @*Atributo de Layout BootStrap*@
                 @Html.ValidationMessageFor(model => model.ArquivoFoto, "", new { @class = "text-danger" })
             </div>
         </div>
 
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

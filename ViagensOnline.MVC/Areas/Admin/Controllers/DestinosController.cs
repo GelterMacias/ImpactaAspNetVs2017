@@ -14,12 +14,14 @@ using ViagensOnline.Repositorios.SqlServer;
 
 namespace ViagensOnline.MVC.Areas.Admin.Controllers
 {
+    [Authorize] //Bloqueia Pagina
     public class DestinosController : Controller
     {
         private ViagensOnlineDbContext db = new ViagensOnlineDbContext();
         private string _caminhoImagensDestinos = ConfigurationManager.AppSettings["caminhoImagensDestinos"]; //Adicionar no arquivo Web.config (da raiz)
 
         // GET: Admin/Destino
+        [AllowAnonymous] //permite acesso anônimo
         public ActionResult Index()
         {
             return View(Mapear(db.Destinos.ToList()));
@@ -49,7 +51,8 @@ namespace ViagensOnline.MVC.Areas.Admin.Controllers
             return viewModel;
         }
 
-        // GET: Admin/Destino/Details/5
+        // GET: Admin/Destino/Details/5  //5 é Id do exemplo do Detail que estaria visualizando
+        [AllowAnonymous] //permite acesso anônimo
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -61,7 +64,8 @@ namespace ViagensOnline.MVC.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(destino);
+            //Vai na pasta View, procura subpasta controller com nome detail
+            return View(Mapear(destino)); 
         }
 
         // GET: Admin/Destino/Create
@@ -127,7 +131,7 @@ namespace ViagensOnline.MVC.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(destino);
+            return View(Mapear(destino)); //Substituir a Classe para DestinoViewModel
         }
 
         // POST: Admin/Destino/Edit/5
@@ -135,18 +139,33 @@ namespace ViagensOnline.MVC.Areas.Admin.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Pais,Cidade,NomeImagem")] Destino destino)
+        public ActionResult Edit(DestinoViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(destino).State = EntityState.Modified;
+                //Como foi criado o mapeamento, deve recuperar o registro do BD e update em todos campos
+                //Entity Framework
+                var destino = db.Destinos.Find(viewModel.Id);
+
+                db.Entry(destino).CurrentValues.SetValues(viewModel); //Mapeamento dos campos atuais do BD e troca pelos dados que veio do viewModel
+
+                //db.Entry(viewModel).State = EntityState.Modified;
+
+                if (viewModel.ArquivoFoto!= null)
+                {
+                    SalvarFoto(viewModel.ArquivoFoto);
+                    destino.NomeImagem = viewModel.ArquivoFoto.FileName;
+                }
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(destino);
+            return View(viewModel);
         }
 
         // GET: Admin/Destino/Delete/5
+        [Authorize(Roles = "MegaMaster")]// Empilhamento significa E (MegaMaster e Master ou MegaMaster e Gerente)
+        [Authorize(Roles ="Master, Gerente")]//Autorização por perfil, Mais de um no mesmo role significa OU
         public ActionResult Delete(int? id) //Interrogação serve para o Int aceitar nulo
         {
             if (id == null)
@@ -158,10 +177,12 @@ namespace ViagensOnline.MVC.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(destino);
+            return View(Mapear(destino));
         }
 
         // POST: Admin/Destino/Delete/5
+        [Authorize(Roles = "MegaMaster")]// Empilhamento significa E (MegaMaster e Master ou MegaMaster e Gerente)
+        [Authorize(Roles = "Master, Gerente")]//Autorização por perfil, Mais de um no mesmo role significa OU
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -169,6 +190,8 @@ namespace ViagensOnline.MVC.Areas.Admin.Controllers
             Destino destino = db.Destinos.Find(id);
             db.Destinos.Remove(destino);
             db.SaveChanges();
+            //Apaga a imagem fisicamente no servidor
+            System.IO.File.Delete(Server.MapPath(Path.Combine(_caminhoImagensDestinos,destino.NomeImagem)));
             return RedirectToAction("Index");
         }
 

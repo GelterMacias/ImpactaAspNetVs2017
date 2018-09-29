@@ -13,14 +13,17 @@ using Loja.MVC.Models;
 
 namespace Loja.MVC.Controllers
 {
+    [Authorize] //só permite o acesso por meio de login
     public class ProdutosController : Controller
     {
         private LojaDbContext db = new LojaDbContext();
         private ProdutoMapeamento produtoMap = new ProdutoMapeamento();
 
+        [AllowAnonymous] //Permite acesso anonimo exclusivo a este metodo
         // GET: Produtos
         public ActionResult Index()
         {
+            //throw new Exception("Test");
             return View(produtoMap.Mapear(db.Produtos.ToList()));
         }
 
@@ -93,6 +96,8 @@ namespace Loja.MVC.Controllers
             return View(produto);
         }
 
+       [Authorize(Roles = "Gerente, Admin")] // Além de logado, precisa ser de um grupo específico
+       [Authorize(Roles = "Master")] // Roles separadas por virgula é OU, um em cima do outro é AND (Gerente e Master, ou, Admin e Master)
         // GET: Produtos/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -108,7 +113,9 @@ namespace Loja.MVC.Controllers
             return View(produto);
         }
 
-        // POST: Produtos/Delete/5
+       [Authorize(Roles = "Gerente, Admin")] // Além de logado, precisa ser de um grupo específico
+       [Authorize(Roles = "Master")] // Roles separadas por virgula é OU, um em cima do outro é AND (Gerente e Master, ou, Admin e Master)
+         // POST: Produtos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

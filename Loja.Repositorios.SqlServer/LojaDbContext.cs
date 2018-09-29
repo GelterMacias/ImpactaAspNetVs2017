@@ -1,6 +1,7 @@
 ﻿using Loja.Dominio;
 using Loja.Repositorios.SqlServer.Migrations;
 using Loja.Repositorios.SqlServer.ModelConfiguration;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace Loja.Repositorios.SqlServer
 {
     //design pattern: Unit of Work
-    public class LojaDbContext : DbContext
+    public class LojaDbContext : IdentityDbContext<Usuario> //Precisa fazer Nuget para pegar Identity Framwork
     {
         public LojaDbContext() : base("lojaConnectionString") //BD
         {
@@ -29,6 +30,7 @@ namespace Loja.Repositorios.SqlServer
 
         public DbSet<Produto> Produtos { get; set; }  //Tabelas
         public DbSet<Categoria> Categorias { get; set; } //Tabelas
+        // não pode ter prop para usuario (Identity), ele usa a linha 16 para criar com base na classe padrão MS
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,6 +40,11 @@ namespace Loja.Repositorios.SqlServer
             modelBuilder.Configurations.Add(new CategoriaConfiguration());
             
             base.OnModelCreating(modelBuilder);
+        }
+
+        public static LojaDbContext Create()
+        {
+            return new LojaDbContext();
         }
     }
 }

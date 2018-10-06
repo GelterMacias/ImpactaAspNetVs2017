@@ -26,9 +26,8 @@
                     <li>@Html.ActionLink("Produtos", "index", "Produtos")</li>
                     <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
                 </ul>
-
-                @Html.Partial("_LoginPartial")
-
+                @Html.Partial("_CulturaPartial") @*Concatena com o arquivo _CulturaPartial*@
+                @Html.Partial("_LoginPartial") @*Concatena com o arquivo _LoginPartial*@
             </div>
         </div>
     </div>

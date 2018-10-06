@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-//using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.Google; //Instalar o Nuget Microsoft.Owin.Security.Google
 using Owin;
 using Loja.Mvc.Models;
 using Loja.Repositorios.SqlServer;
@@ -60,11 +60,12 @@ namespace Loja.Mvc
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            //Descomentar estas linhas para utilizar o Login Google
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "524006005226-frl2knkju0lpbujr6m5k23btrqr7cjdn.apps.googleusercontent.com",
+                ClientSecret = "XJ5sG8ci1I7ZO3yCmTWFAV_-"
+            });
         }
     }
 }
